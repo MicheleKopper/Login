@@ -13,8 +13,17 @@ async function login(email, password) {
             alert(resposta.data.mensagem)
         }
 
+        // Salva os dados do usuário logado com sucesso no localStorage
+        const dadosUsuario = resposta.data.data
+        localStorage.setItem('usuarioLogado', JSON.stringify(dadosUsuario))
+
+
+        const get = localStorage.getItem('dadosUsuario')
+        console.log(get);
+
+
         window.location.href = 'listagem.html' // Logando com sucesso, redireciona para a página de lista de recados
-        formLogin.reset() // Reset para limpar os campos depois de logar
+        formLogin.reset() // Limpa os campos depois de logar
 
     } catch (error) {
         console.log(error);
